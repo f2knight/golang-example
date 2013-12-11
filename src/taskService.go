@@ -29,13 +29,15 @@ func connectDB() *pg.DB {
     })
     return db;
 }
-/*
-func createTable(db *pg.DB) {
+
+func createTable() {
+    db := connectDB()
+    defer db.Close()
     res, err :=db.Exec("CREATE TABLE users(id serial PRIMARY KEY , name varchar(500), email varchar(500))")
     fmt.Println(res.Affected(), err)
 }
 
-
+/*
 func delUser(db *pg.DB) {
     
 }

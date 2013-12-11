@@ -4,7 +4,6 @@ import (
 	"github.com/gocraft/web"
     "fmt"
     "encoding/json"
-    //"strings"
     "strconv"
 )
 
@@ -56,3 +55,6 @@ func (c *Context) UsersCreate(rw web.ResponseWriter, req *web.Request) {
     fmt.Fprint(rw, ResponseJson{"success": true})
 }
 
+func (c *Context) CreateDB() {
+    createTable()
+}
