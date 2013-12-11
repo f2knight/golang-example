@@ -1,14 +1,97 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" dir="ltr">
-<head profile="http://gmpg.org/xfn/11">
-<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-<title>Test RESTful API</title>
-<script type="text/javascript" src="jquery-1.8.1.min.js" ></script>
-<script type="text/javascript" src="script.js" ></script>
+<head>
+	<title>Test RESTful API</title>
+
+	<link href="http://netdna.bootstrapcdn.com/font-awesome/4.0.1/css/font-awesome.css" rel="stylesheet">
+    <link href="http://netdna.bootstrapcdn.com/twitter-bootstrap/2.3.2/css/bootstrap-combined.min.css" rel="stylesheet">
+	<link rel="stylesheet" href="css/ui-lightness/jquery-ui-1.8.21.custom.css" type="text/css">
+	<link rel="stylesheet" href="css/bootstrap.min.css" type="text/css">
+	<link rel="stylesheet" href="css/style.css" type="text/css">
+	<script type="text/javascript" src="js/jquery-1.8.1.min.js" ></script>
+	<script type="text/javascript" src="js/jquery-ui-1.8.21.custom.min.js" ></script>
+	<script type="text/javascript" src="js/bootstrap.min.js" ></script>
+	<script type="text/javascript" src="js/script.js" ></script>
 </head>
+
+
 <body>
-	<div id="mainbody" >
-		<button id="list-user">List User</button>
-		<button id="create-user">Create User</button>
-	</div>
+	<section class="wrapper">
+		<header class="row-fluid">
+			<div class="pull-left">
+				<h1>Test RESTful API</h1>
+			</div>
+		 </header>
+		<div class="content row-fluid">
+			<div class="span4">	
+				<div class="row-fluid form-horizontal">
+				    <div class="control-group">
+					    <label class="control-label" for="name">Name</label>
+					    <div class="controls">
+					    	<input type="text" id="name" placeholder="Email">
+					    </div>
+				    </div>
+					<div class="control-group">
+					    <label class="control-label" for="email">Email</label>
+					    <div class="controls">
+					    	<input type="text" id="email" placeholder="Email">
+					    </div>
+				    </div>
+					<div class="control-group">
+					    <div class="controls">
+					    	<button id="create-user" class="btn btn-success"><span class="action"><i class="fa fa-plus"></i></span> Create User</button>
+					    </div>
+				    </div>	
+				</div>
+			</div>
+			<div class="span8">
+				<button class="btn btn-info" id="list-user"><span class="action"><i class='fa fa-refresh'></i></span> Refesh</button>
+				<table class="table table-striped">
+			        <thead>
+			          <tr>
+			            <th>#</th>
+			            <th>Name</th>
+			            <th>Email</th>
+			            <th>Action</th>
+			          </tr>
+			        </thead>
+			        <tbody id="list-users">
+			          <!--tr>
+			            <td>1</td>
+			            <td>Mark</td>
+			            <td>@mdo</td>
+			            <td>
+			            	<button class="btn btn-info"><i class="fa fa-pencil-square-o"></i> Edit</button>
+			            	<button class="btn btn-danger"><span><i class="fa fa-trash-o"></i></span> Delete</button>
+			            </td>
+			          </tr>
+			          <tr>
+			            <td>2</td>
+			            <td>Jacob</td>
+			            <td>@fat</td>
+			            <td>
+			            	<button class="btn btn-info"><i class="fa fa-pencil-square-o"></i> Edit</button>
+			            	<button class="btn btn-danger"><span><i class="fa fa-trash-o"></i></span> Delete</button>
+			            </td>
+			          </tr>
+			          <tr>
+			            <td>3</td>
+			            <td>Larry</td>
+			            <td>@twitter</td>
+			            <td>
+			            	<button class="btn btn-info"><i class="fa fa-pencil-square-o"></i> Edit</button>
+			            	<button class="btn btn-danger"><span><i class="fa fa-trash-o"></i></span> Delete</button>
+			            </td>
+			          </tr-->
+			        </tbody>
+			    </table>
+			</div>
+		</div>
+
+		<!--div>
+			<button class="btn btn-info" id="list-user">List User</button>
+			
+		</div-->
+	</section>
 </body>
+</html>
