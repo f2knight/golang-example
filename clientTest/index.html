@@ -1,0 +1,48 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" dir="ltr">
+<head profile="http://gmpg.org/xfn/11">
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<title>Test RESTful API</title>
+<script type="text/javascript" src="jquery-1.8.1.min.js" ></script>
+
+<script type="text/javascript" >
+	$(function(){
+		$("#action").click(function(){
+			
+			$.ajax({
+		        url: "http://localhost:3001/users",
+		        type: "post",
+		        data: {"name":"thuy",
+		    			"email":"thuy@vidait.vn"},
+		        success: function(data){
+		            console.log(data);
+		        },
+		        error:function(err){
+		        	console.log(err);
+		        }
+		    });
+			
+			/*
+			$.ajax({
+		        url: "http://localhost:3001/users",
+		        type: "GET",
+		        success: function(data){
+		            //console.log($.parseJSON(data));
+		        },
+		        error:function(err){
+		        	console.log(err);
+		        }
+		    });
+			*/
+		});
+		
+		
+	});
+</script>
+</head>
+<body>
+	<div id="mainbody" >
+		<button id="action">Action</button>
+	</div>
+
+</body>
