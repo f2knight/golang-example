@@ -63,7 +63,7 @@ func main() {
         Database : "myapp",
     })
     defer db.Close()
-    createUsers(db)
+    //createUsers(db)
     //createTable(db);
     //createUser(db)
     users,err := getUsers(db)

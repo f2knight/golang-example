@@ -9,12 +9,11 @@ import (
 
 
 func main() {
-    router := web.New(task.Context{}).                  
-        Middleware(web.LoggerMiddleware).           
-        Middleware(web.ShowErrorsMiddleware).       
-        //Middleware((*task.Context).SetHelloCount).  
-        //Get("/users", (*task.Context).UsersList)   
-        //Post("/users", (*task.Context).UsersCreate)  
+    router := web.New(task.Context{}).               
+        Middleware(web.LoggerMiddleware).       
+        Middleware(web.ShowErrorsMiddleware).  
+        Get("/users", (*task.Context).UsersList). 
+        Post("/users", (*task.Context).UsersCreate). 
         //Put("/users/:id", (*task.Context).UsersUpdate)
         //Delete("/users/:id", (*task.Context).UsersDelete)
         //Patch("/users/:id", (*task.Context).UsersUpdate)
