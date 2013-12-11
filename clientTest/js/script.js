@@ -10,7 +10,13 @@ $(function(){
 	$("#email").val("");
 
 	function unpdateList(data){
-		console.log(data);
+		$("#list-users").html("");
+		$.each(data, function(index) {
+			var strHTML = "<tr><td>" + data[index].id + "</td><td>" + data[index].name + "</td><td>" + data[index].email + "</td>";
+	      	strHTML += "<td><button class='btn btn-info'><i class='fa fa-pencil-square-o'></i> Edit</button>";
+	        strHTML += "<button class='btn btn-danger'><span class='action'><i class='fa fa-trash-o'></i></span> Delete</button></td></tr>";
+            $("#list-users").append(strHTML);
+        });
 	}
 
 	function getList($el){
@@ -20,7 +26,7 @@ $(function(){
 	        url: mainUrl + "users",
 	        type: "GET",
 	        success: function(data){
-	            unpdateList(data.content);
+	            unpdateList(data);
 	            $spinEl.html("<i class='fa fa-refresh'></i>");
 	        },
 	        error:function(err){
@@ -28,6 +34,7 @@ $(function(){
 	        }
 	    });
 	}
+	getList($("#list-user"));
 	//Test Get method
 	$("#list-user").click(function(){
 		getList($(this));

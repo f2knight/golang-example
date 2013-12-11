@@ -4,6 +4,8 @@ import (
 	"github.com/gocraft/web"
     "fmt"
     "encoding/json"
+    //"strings"
+    "strconv"
 )
 
 type Context struct {
@@ -11,9 +13,9 @@ type Context struct {
 }
 
 
-type Response map[string]interface{}
+type ResponseJson map[string]interface{}
 
-func (r Response) String() (s string) {
+func (r ResponseJson) String() (s string) {
         b, err := json.Marshal(r)
         if err != nil {
                 s = ""
@@ -27,16 +29,19 @@ func (c *Context) Root(rw web.ResponseWriter, req *web.Request) {
     fmt.Fprint(rw, "Welcome")
 }
 
-func (c *Context) UsersList(rw web.ResponseWriter, req *web.Request) {    
-    var result = ""
+func (c *Context) UsersList(rw web.ResponseWriter, req *web.Request) {  
+    var jsonMap = make(ResponseJson)  
     rw.Header().Set("Access-Control-Allow-Origin", "*")
     rw.Header().Set("Content-Type", "application/json")
     users,_ := getUsers()   
     for _,element := range users {
-    	b, _ := json.Marshal(element)
-        result += string(b)
+        var jsonMapItem = make(ResponseJson)
+        jsonMapItem["id"] = strconv.Itoa(element.Id)
+        jsonMapItem["name"] = element.Name
+        jsonMapItem["email"] = element.Email
+        jsonMap[strconv.Itoa(element.Id)] = jsonMapItem
     }    
-    fmt.Fprint(rw, Response{"content": result})
+    fmt.Fprint(rw, jsonMap)
 }
 
 func (c *Context) UsersCreate(rw web.ResponseWriter, req *web.Request) {
@@ -48,6 +53,6 @@ func (c *Context) UsersCreate(rw web.ResponseWriter, req *web.Request) {
     
     rw.Header().Set("Access-Control-Allow-Origin", "*")
     rw.Header().Set("Content-Type", "application/json")
-    fmt.Fprint(rw, Response{"success": true})
+    fmt.Fprint(rw, ResponseJson{"success": true})
 }
 
