@@ -1,22 +1,21 @@
 package main
 
 import (
-    "github.com/gocraft/web"
-    "net/http"
-    "./src"
+	"./src"
+	"github.com/gocraft/web"
+	"net/http"
 )
 
-
-
 func main() {
-    router := web.New(task.Context{}).               
-        Middleware(web.LoggerMiddleware).       
-        Middleware(web.ShowErrorsMiddleware).  
-        Get("/users", (*task.Context).UsersList). 
-        Post("/users", (*task.Context).UsersCreate). 
-        //Put("/users/:id", (*task.Context).UsersUpdate)
-        //Delete("/users/:id", (*task.Context).UsersDelete)
-        //Patch("/users/:id", (*task.Context).UsersUpdate)
-        Get("/", (*task.Context).Root)               
-    http.ListenAndServe("localhost:3001", router)   
+	router := web.New(task.Context{}).
+		Middleware(web.LoggerMiddleware).
+		Middleware(web.ShowErrorsMiddleware).
+		Get("/users", (*task.Context).UsersList).
+		Post("/users", (*task.Context).UsersCreate).
+		Post("/users/:id:\\d+", (*task.Context).UsersAction). //for Del and Update use Ajax
+		Delete("/users/:id:\\d+", (*task.Context).UsersDelete).
+		Put("/users/:id:\\d+", (*task.Context).UsersUpdate).
+		Get("/", (*task.Context).Root)
+
+	http.ListenAndServe("localhost:3001", router)
 }
