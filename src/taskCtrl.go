@@ -29,18 +29,12 @@ func (c *Context) Root(rw web.ResponseWriter, req *web.Request) {
 }
 
 func (c *Context) UsersList(rw web.ResponseWriter, req *web.Request) {
-	var jsonMap = make(ResponseJson)
 	rw.Header().Set("Access-Control-Allow-Origin", "*")
 	rw.Header().Set("Content-Type", "application/json")
 	users, _ := getUsers()
-	for _, element := range users {
-		var jsonMapItem = make(ResponseJson)
-		jsonMapItem["id"] = strconv.Itoa(element.Id)
-		jsonMapItem["name"] = element.Name
-		jsonMapItem["email"] = element.Email
-		jsonMap[strconv.Itoa(element.Id)] = jsonMapItem
-	}
-	fmt.Fprint(rw, jsonMap)
+	b, _ := json.Marshal(users)
+	fmt.Fprint(rw, string(b))
+
 }
 
 func (c *Context) UsersCreate(rw web.ResponseWriter, req *web.Request) {
