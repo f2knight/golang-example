@@ -2,7 +2,7 @@ golang-example
 ==============
 
 __Web base API__
-Create Server RestFul API
+Create Server RESTful API
 
 __Install__
 run command for Create Table :
